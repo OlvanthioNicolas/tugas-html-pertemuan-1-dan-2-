@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+            padding: 30px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .confirmation-message {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            color: #000; /* Mengubah warna teks menjadi hitam */
+        }
+    </style>
+    <script>
+        function showConfirmation(event) {
+            event.preventDefault(); // Mencegah form dari submit secara normal
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+
+            // Menampilkan data yang dimasukkan dalam pesan konfirmasi
+            document.getElementById('confirmationName').innerText = name;
+            document.getElementById('confirmationPhone').innerText = phone;
+            document.getElementById('confirmationEmail').innerText = email;
+            document.getElementById('confirmationAddress').innerText = address;
+
+            document.getElementById('contactForm').reset(); // Reset form setelah submit
+            document.getElementById('confirmationMessage').style.display = 'block'; // Tampilkan pesan konfirmasi
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Contact Us</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6 form-container">
+                <form id="contactForm" onsubmit="showConfirmation(event)">
+                    <div class="form-group">
+                        <label for="name">Nama:</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Nomor HP:</label>
+                        <input type="tel" class="form-control" id="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Alamat:</label>
+                        <textarea class="form-control" id="address" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Kirim</button>
+                </form>
+                <div id="confirmationMessage" class="confirmation-message">
+                    <h2>Terima Kasih!</h2>
+                    <p>Data Anda telah terdaftar dengan rincian berikut:</p>
+                    <ul class="list-unstyled">
+                        <li><strong>Nama:</strong> <span id="confirmationName"></span></li>
+                        <li><strong>Nomor HP:</strong> <span id="confirmationPhone"></span></li>
+                        <li><strong>Email:</strong> <span id="confirmationEmail"></span></li>
+                        <li><strong>Alamat:</strong> <span id="confirmationAddress"></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
